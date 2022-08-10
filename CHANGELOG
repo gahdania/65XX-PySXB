@@ -1,0 +1,77 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.2.0] - 2021-08-15
+### Added
+constants.py - added mnemonic constants for the games, and regions
+client.py - added str and repr methods
+
+### Changed
+util.py - allow localize to except a None type to retrieve all of the locales for an API endpoint
+client.py - rewrite of endpoint
+          - updated changes for constants
+exceptions.py - added BNetNegativeIndexError, and BNetNoDataFoundError
+
+### Removed
+None
+
+## [1.1.0] - 2021-07-15
+### Added
+exceptions.py - for exceptions
+
+### Changed
+client.py = _request renamed to endpoint
+
+## [0.0.3] - 2021-06-20
+### Added
+util.py - for utility functions
+tests for the client (need to work on the authorization workflow tests)
+
+### Changed
+Moved slugify, localize, currency_convertor into their own file (util.py)
+Made modifications class constructor:
+  moved standard and condensed into it
+  moved client_id and client_secret parameters to positional
+  added "release" attribute to allow re-releases of games (ie WoW Classic and TBC as of 2021-Jun
+Made modifications to _request:
+  added logic for handling locale properly
+  added logic to add the namespace parameter to the headers
+Removed the "locale" check from validate_token and get_user_info
+changed _request to request
+
+### Removed
+N/A
+
+
+## [0.0.2] - 2020-03-25
+### Added
+BattleNetBaseClass definition
+stream keyword for request()
+
+
+### Changed
+Moved get_user_info() and validate_token() to BattleNetBaseClass
+corrected some bugs that was preventing BattleNetUserAuthClient from
+    successfully connecting to the API
+
+### Removed
+N/A
+
+## [0.0.1] - 2019-12-08
+### Added
+Initial layout
+BattleNetCredentialClient class
+BattleNetUserAuthClient class
+localize() function to standardize the locale parameters
+
+### Changed
+N/A
+
+### Removed
+N/A
+
+[0.0.3]: https://gitlab.com/battlenet/tags/v0.0.3
+[0.0.2]: https://gitlab.com/battlenet/tags/v0.0.2

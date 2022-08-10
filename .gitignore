@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.env
+/venv/
+*.sqlite3
+/.idea
+*.komodoproject
+**/.buildinfo
+**/objects.inv
+/build
+/docs/build/doctrees
+/public/
+pysxb.egg-info
+.coverage
+/.tox

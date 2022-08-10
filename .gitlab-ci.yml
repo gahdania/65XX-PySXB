@@ -1,0 +1,34 @@
+image: python:3.8-slim
+
+test:
+  stage: test
+  tags:
+    - gitlab-org
+  script:
+    - python setup.py sdist bdist_wheel
+  only:
+    - branches
+  except:
+    - master
+
+build:
+  stage: build
+  tags:
+    - gitlab-org
+  script:
+    - python setup.py sdist bdist_wheel
+  only:
+    - master
+
+pages:
+  stage: deploy
+  tags:
+    - gitlab-org
+  script:
+    - pip install -U sphinx recommonmark requests_oauthlib pydata-sphinx-theme
+    - sphinx-build -b html docs/source public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
