@@ -4,18 +4,17 @@ from serial import SerialTimeoutException
 
 from PySXB.pysxb import PySXB
 
-
 if __name__ == "__main__":
 
     argv = sys.argv[1:]
     device = None
-    baud = None
+    baud_rate= None
     file = None
     cpu_mode = None
     exec_address = None
     opts = []
     short_opts = "d:b:f:e:E:"
-    long_opts = ("device =", "baud =", "file =", "C02 =", "C816 =")
+    long_opts = ["device =", "baud =", "file =", "C02 =", "C816 ="]
     try:
         opts, opt_args = getopt.getopt(argv, short_opts, long_opts)
     except getopt.GetoptError as opt_error:
@@ -44,16 +43,16 @@ if __name__ == "__main__":
     if not device:
         device = '/dev/ttyUSB0'
 
-    if not baud:
-        baud = 9600
+    if not baud_rate:
+        baud_rate = 9600
 
     if not cpu_mode:
         cpu_mode = 1
 
-    ser = PySXB(device, baud)
+    ser = PySXB(device, baud_rate)
 
     if file:
-        ser.load_program(file)
+        ser.load(file)
 
     try:
         ser.execute(cpu_mode, 0x2000, 2)       # equivalent to F9 in debugger w/o break points
