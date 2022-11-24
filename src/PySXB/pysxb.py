@@ -5,6 +5,7 @@ Based on the work of Chris Baird <cjb@brushtail.apana.org.au> July 2019
 David Couples
 2021 November
 """
+from __future__ import annotations
 
 import serial
 
@@ -117,7 +118,7 @@ class PySXB(serial.Serial):
                 line += " "
             line += f" {datum:02X}"
 
-        return line
+        print(line)
 
     @property
     def stack(self):
