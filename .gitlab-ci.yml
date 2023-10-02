@@ -25,7 +25,7 @@ pages:
   tags:
     - gitlab-org
   script:
-    - pip install -U sphinx recommonmark requests_oauthlib pydata-sphinx-theme sphinx_rtd_theme myst-parser
+    - pip install -U sphinx recommonmark requests_oauthlib pydata-sphinx-theme sphinx_rtd_theme myst-parser sphinx-markdown-builder
     - sphinx-build -b html docs/source public
   artifacts:
     paths:
